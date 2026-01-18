@@ -1,0 +1,15 @@
+#file operation to read
+file=open("f1.txt","r")
+content=file.readline()
+content1=file.readlines()
+print(content)
+print(content1)
+file.close()
+#append
+file = open("f1.txt", "a")
+file.write("\n New Line Added")
+file.close()
+file = open("f1.txt", "w")
+file.write("Hello Python\n")
+file.write("This is my write example")
+file.close()

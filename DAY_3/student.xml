@@ -1,0 +1,12 @@
+<students>
+    <Student>
+        <Id>1</Id>
+        <Name>Durga</Name>
+        <Age>23</Age>
+    </Student>
+    <Student>
+        <Id>2</Id>
+        <Name>Balu</Name>
+        <Age>22</Age>
+    </Student>
+</students>
