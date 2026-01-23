@@ -1,0 +1,34 @@
+[
+    {
+        "id": "s1",
+        "name": "raja",
+        "department": "cse",
+        "semester": 8,
+        "marks": [
+            78,
+            76,
+            56,
+            87,
+            67
+        ],
+        "courses": [
+            "py101"
+        ]
+    },
+    {
+        "id": "s2",
+        "name": "ramu",
+        "department": "cse",
+        "semester": 8,
+        "marks": [
+            72,
+            59,
+            64,
+            84,
+            75
+        ],
+        "courses": [
+            "py101"
+        ]
+    }
+]
