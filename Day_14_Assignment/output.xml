@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4.1 (Python 3.12.3 on win32)" generated="2026-02-02T21:17:21.860223" rpa="false" schemaversion="5">
+<suite id="s1" name="Q2" source="C:\Users\prasa\PyCharmMiscProject\RobotFile\Day_14_Assignment\Q2.robot">
+<test id="s1-t1" name="Verify Successful Login Using BuiltIn Keywords" line="11">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-02-02T21:17:22.174741" level="INFO">Opening browser 'chrome' to base url 'https://practicetestautomation.com/practice-test-login/'.</msg>
+<arg>${URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-02-02T21:17:22.173741" elapsed="3.877546"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2026-02-02T21:17:26.051287" elapsed="0.042644"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-02-02T21:17:26.094928" level="INFO">Typing text 'student' into text field 'id=username'.</msg>
+<arg>id=username</arg>
+<arg>${USERNAME}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-02-02T21:17:26.094928" elapsed="0.158524"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-02-02T21:17:26.254454" level="INFO">Typing text 'Password123' into text field 'id=password'.</msg>
+<arg>id=password</arg>
+<arg>${PASSWORD}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-02-02T21:17:26.254454" elapsed="0.139339"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2026-02-02T21:17:28.395500" level="INFO">Slept 2 seconds.</msg>
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2026-02-02T21:17:26.394800" elapsed="2.000700"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2026-02-02T21:17:28.396141" level="INFO">Clicking button 'id=submit'.</msg>
+<arg>id=submit</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2026-02-02T21:17:28.396141" elapsed="3.032062"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>Logged In Successfully</arg>
+<arg>10s</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2026-02-02T21:17:31.428203" elapsed="0.015664"/>
+</kw>
+<kw name="Get Location" owner="SeleniumLibrary">
+<msg time="2026-02-02T21:17:31.451884" level="INFO">${actual_url} = https://practicetestautomation.com/logged-in-successfully/</msg>
+<var>${actual_url}</var>
+<doc>Returns the current browser window URL.</doc>
+<status status="PASS" start="2026-02-02T21:17:31.443867" elapsed="0.008017"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-02-02T21:17:31.452874" level="INFO">${expected_url} = https://practicetestautomation.com/logged-in-successfully/</msg>
+<var>${expected_url}</var>
+<arg>https://practicetestautomation.com/logged-in-successfully/</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2026-02-02T21:17:31.451884" elapsed="0.000990"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${actual_url}</arg>
+<arg>${expected_url}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-02-02T21:17:31.452874" elapsed="0.000998"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-02-02T21:17:31.454952" level="INFO">Login Successful</msg>
+<arg>Login Successful</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-02-02T21:17:31.453872" elapsed="0.001080"/>
+</kw>
+<arg>'${actual_url}'=='${expected_url}'</arg>
+<arg>Log</arg>
+<arg>Login Successful</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2026-02-02T21:17:31.453872" elapsed="0.001080"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-02-02T21:17:31.454952" elapsed="2.227328"/>
+</kw>
+<status status="PASS" start="2026-02-02T21:17:22.172760" elapsed="11.509520"/>
+</test>
+<status status="PASS" start="2026-02-02T21:17:21.862242" elapsed="11.820038"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Q2" id="s1" pass="1" fail="0" skip="0">Q2</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
