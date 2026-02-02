@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4.1 (Python 3.12.3 on win32)" generated="2026-02-02T01:03:03.089361" rpa="false" schemaversion="5">
+<suite id="s1" name="TC003" source="C:\Users\prasa\PyCharmMiscProject\DAY_13\TC003.robot">
+<kw name="Open qafox" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-02-02T01:03:04.316594" level="INFO">Opening browser 'chrome' to base url 'https://tutorialsninja.com/demo/index.php?route=common/home'.</msg>
+<arg>${url}</arg>
+<arg>${browser}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-02-02T01:03:04.316594" elapsed="1.741354"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2026-02-02T01:03:06.057948" elapsed="0.036458"/>
+</kw>
+<status status="PASS" start="2026-02-02T01:03:04.316594" elapsed="1.777812"/>
+</kw>
+<test id="s1-t1" name="Register User Using Excel" line="36">
+<status status="FAIL" start="2026-02-02T01:03:06.094406" elapsed="0.000000">Test cannot be empty.</status>
+</test>
+<kw name="Close All Browsers" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" start="2026-02-02T01:03:06.094406" elapsed="2.230188"/>
+</kw>
+<status status="FAIL" start="2026-02-02T01:03:03.093717" elapsed="5.231968"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="TC003" id="s1" pass="0" fail="1" skip="0">TC003</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2026-02-02T01:03:04.316594" level="ERROR">[ DataDriver ] Error in robot file:
+  File "C:\Users\prasa\PyCharmMiscProject\DAY_13\TC003.robot", line 0</msg>
+<msg time="2026-02-02T01:03:04.316594" level="ERROR">In source file:
+  File "testdata.xlsx", line 0</msg>
+<msg time="2026-02-02T01:03:04.316594" level="ERROR">Calling method '_start_suite' of listener 'DataDriver' failed: ValueError: Unassigned requiered argument detected: ${firstname}.</msg>
+</errors>
+</robot>
