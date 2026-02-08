@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Patient Registration</title>
+</head>
+<body>
+
+<h2>Patient Registration</h2>
+
+<form method="post" action="/register">
+    Name: <input type="text" name="name"><br><br>
+
+    Age: <input type="number" name="age"><br><br>
+
+    Gender:
+    <input type="radio" name="gender" value="Male"> Male
+    <input type="radio" name="gender" value="Female"> Female
+    <br><br>
+
+    Contact: <input type="text" name="contact"><br><br>
+
+    Disease: <input type="text" name="disease"><br><br>
+
+    Doctor: <input type="text" name="doctor"><br><br>
+
+    <button type="submit">Register</button>
+</form>
+
+<hr>
+
+<h3>Patient List</h3>
+
+<table border="1">
+    <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Disease</th>
+        <th>Doctor</th>
+    </tr>
+
+    {% for p in patients %}
+    <tr>
+        <td>{{ p.name }}</td>
+        <td>{{ p.age }}</td>
+        <td>{{ p.disease }}</td>
+        <td>{{ p.doctor }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>

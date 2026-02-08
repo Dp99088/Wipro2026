@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.12.3 on win32)" generated="20260208 12:03:11.529" rpa="false" schemaversion="4">
+<suite id="s1" name="Patient" source="C:\Users\prasa\PyCharmMiscProject\CASE_STUDY_4\patient.robot">
+<kw name="Open Browser" library="SeleniumLibrary" type="SETUP">
+<arg>http://localhost:5000</arg>
+<arg>edge</arg>
+<arg>executable_path=C:/Users/prasa/PyCharmMiscProject/msedgedriver.exe</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20260208 12:03:11.711" level="INFO">Opening browser 'edge' to base url 'http://localhost:5000'.</msg>
+<status status="PASS" starttime="20260208 12:03:11.711" endtime="20260208 12:03:13.427"/>
+</kw>
+<test id="s1-t1" name="Register Patient" line="9">
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>name=name</arg>
+<arg>Durga Prasad</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20260208 12:03:13.430" level="INFO">Typing text 'Durga Prasad' into text field 'name=name'.</msg>
+<status status="PASS" starttime="20260208 12:03:13.428" endtime="20260208 12:03:13.592"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>name=age</arg>
+<arg>23</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20260208 12:03:13.593" level="INFO">Typing text '23' into text field 'name=age'.</msg>
+<status status="PASS" starttime="20260208 12:03:13.592" endtime="20260208 12:03:13.698"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>name=disease</arg>
+<arg>Flu</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20260208 12:03:13.699" level="INFO">Typing text 'Flu' into text field 'name=disease'.</msg>
+<status status="PASS" starttime="20260208 12:03:13.699" endtime="20260208 12:03:13.799"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>name=doctor</arg>
+<arg>Dr.Smith</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20260208 12:03:13.801" level="INFO">Typing text 'Dr.Smith' into text field 'name=doctor'.</msg>
+<status status="PASS" starttime="20260208 12:03:13.800" endtime="20260208 12:03:13.922"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>Register</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20260208 12:03:13.923" level="INFO">Clicking button 'Register'.</msg>
+<status status="PASS" starttime="20260208 12:03:13.923" endtime="20260208 12:03:14.045"/>
+</kw>
+<status status="PASS" starttime="20260208 12:03:13.427" endtime="20260208 12:03:14.047"/>
+</test>
+<test id="s1-t2" name="Register Multiple Patients" line="16">
+<kw name="Register Patient Template">
+<arg>Alice</arg>
+<arg>25</arg>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>name=name</arg>
+<arg>${name}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20260208 12:03:14.052" level="INFO">Typing text 'Alice' into text field 'name=name'.</msg>
+<status status="PASS" starttime="20260208 12:03:14.051" endtime="20260208 12:03:14.151"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>name=age</arg>
+<arg>${age}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20260208 12:03:14.152" level="INFO">Typing text '25' into text field 'name=age'.</msg>
+<status status="PASS" starttime="20260208 12:03:14.151" endtime="20260208 12:03:14.218"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>Register</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20260208 12:03:14.219" level="INFO">Clicking button 'Register'.</msg>
+<status status="PASS" starttime="20260208 12:03:14.218" endtime="20260208 12:03:14.356"/>
+</kw>
+<status status="PASS" starttime="20260208 12:03:14.050" endtime="20260208 12:03:14.356"/>
+</kw>
+<kw name="Register Patient Template">
+<arg>Bob</arg>
+<arg>40</arg>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>name=name</arg>
+<arg>${name}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20260208 12:03:14.358" level="INFO">Typing text 'Bob' into text field 'name=name'.</msg>
+<status status="PASS" starttime="20260208 12:03:14.357" endtime="20260208 12:03:14.440"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>name=age</arg>
+<arg>${age}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20260208 12:03:14.441" level="INFO">Typing text '40' into text field 'name=age'.</msg>
+<status status="PASS" starttime="20260208 12:03:14.440" endtime="20260208 12:03:14.493"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>Register</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20260208 12:03:14.494" level="INFO">Clicking button 'Register'.</msg>
+<status status="PASS" starttime="20260208 12:03:14.493" endtime="20260208 12:03:14.601"/>
+</kw>
+<status status="PASS" starttime="20260208 12:03:14.357" endtime="20260208 12:03:14.603"/>
+</kw>
+<status status="PASS" starttime="20260208 12:03:14.048" endtime="20260208 12:03:14.603"/>
+</test>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20260208 12:03:14.604" endtime="20260208 12:03:16.790"/>
+</kw>
+<status status="PASS" starttime="20260208 12:03:11.530" endtime="20260208 12:03:16.790"/>
+</suite>
+<statistics>
+<total>
+<stat pass="2" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="2" fail="0" skip="0" id="s1" name="Patient">Patient</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
