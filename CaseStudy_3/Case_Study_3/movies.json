@@ -1,0 +1,51 @@
+[
+    {
+        "id": 102,
+        "movie_name": "Inception",
+        "language": "English",
+        "duration": "2h 28m",
+        "price": 300
+    },
+    {
+        "id": 102,
+        "movie_name": "Inception",
+        "language": "English",
+        "duration": "2h 28m",
+        "price": 300
+    },
+    {
+        "id": 102,
+        "movie_name": "Inception",
+        "language": "English",
+        "duration": "2h 28m",
+        "price": 300
+    },
+    {
+        "id": 102,
+        "movie_name": "Inception",
+        "language": "English",
+        "duration": "2h 28m",
+        "price": 300
+    },
+    {
+        "id": 102,
+        "movie_name": "Inception",
+        "language": "English",
+        "duration": "2h 28m",
+        "price": 300
+    },
+    {
+        "id": 103,
+        "movie_name": "Avatar",
+        "language": "Hindi",
+        "duration": "2h 28m",
+        "price": 350
+    },
+    {
+        "id": 103,
+        "movie_name": "Avatar",
+        "language": "English",
+        "duration": "2h 28m",
+        "price": 150
+    }
+]
