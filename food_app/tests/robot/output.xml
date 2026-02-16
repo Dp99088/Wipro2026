@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.12.3 on win32)" generated="20260216 17:22:04.761" rpa="false" schemaversion="4">
+<suite id="s1" name="Foodie" source="C:\Users\prasa\PyCharmMiscProject\food_app\tests\robot\foodie.robot">
+<kw name="Create Session" library="RequestsLibrary" type="SETUP">
+<arg>foodapi</arg>
+<arg>http://127.0.0.1:5006</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20260216 17:22:04.908" level="INFO">Creating Session using : alias=foodapi, url=http://127.0.0.1:5006, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20260216 17:22:04.908" endtime="20260216 17:22:04.909"/>
+</kw>
+<test id="s1-t1" name="Register Restaurant" line="31">
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${body}</var>
+<arg>name=${RESTAURANT_NAME}</arg>
+<arg>category=${CATEGORY}</arg>
+<arg>location=${LOCATION}</arg>
+<arg>images=${IMAGES}</arg>
+<arg>contact=${CONTACT}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20260216 17:22:04.910" level="INFO">${body} = {'name': 'Test Restaurant', 'category': 'Fast Food', 'location': 'Nodia', 'images': '["img1.jpg"]', 'contact': '9999999999'}</msg>
+<status status="PASS" starttime="20260216 17:22:04.909" endtime="20260216 17:22:04.910"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>foodapi</arg>
+<arg>${BASE_URL}/restaurants</arg>
+<arg>json=${body}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20260216 17:22:04.918" level="INFO">POST Request : url=http://127.0.0.1:5006/api/v1/restaurants 
+ path_url=/api/v1/restaurants 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '126', 'Content-Type': 'application/json'} 
+ body=b'{"name": "Test Restaurant", "category": "Fast Food", "location": "Nodia", "images": "[\\"img1.jpg\\"]", "contact": "9999999999"}' 
+ </msg>
+<msg timestamp="20260216 17:22:04.918" level="INFO">POST Response : url=http://127.0.0.1:5006/api/v1/restaurants 
+ status=201, reason=CREATED 
+ headers={'Server': 'Werkzeug/3.1.5 Python/3.12.3', 'Date': 'Mon, 16 Feb 2026 11:52:04 GMT', 'Content-Type': 'application/json', 'Content-Length': '189', 'Connection': 'close'} 
+ body={
+  "active": true,
+  "approved": false,
+  "category": "Fast Food",
+  "contact": "9999999999",
+  "id": 2,
+  "images": "[\"img1.jpg\"]",
+  "location": "Nodia",
+  "name": "Test Restaurant"
+}
+ 
+ </msg>
+<msg timestamp="20260216 17:22:04.919" level="INFO">${response} = &lt;Response [201]&gt;</msg>
+<status status="PASS" starttime="20260216 17:22:04.910" endtime="20260216 17:22:04.919"/>
+</kw>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<arg>201</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<msg timestamp="20260216 17:22:04.920" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<status status="PASS" starttime="20260216 17:22:04.919" endtime="20260216 17:22:04.921"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${json}</var>
+<arg>${response.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20260216 17:22:04.922" level="INFO">${json} = {'active': True, 'approved': False, 'category': 'Fast Food', 'contact': '9999999999', 'id': 2, 'images': '["img1.jpg"]', 'location': 'Nodia', 'name': 'Test Restaurant'}</msg>
+<status status="PASS" starttime="20260216 17:22:04.921" endtime="20260216 17:22:04.922"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${RESTAURANT_ID}</arg>
+<arg>${json["id"]}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<msg timestamp="20260216 17:22:04.925" level="INFO">${RESTAURANT_ID} = 2</msg>
+<status status="PASS" starttime="20260216 17:22:04.923" endtime="20260216 17:22:04.925"/>
+</kw>
+<status status="PASS" starttime="20260216 17:22:04.909" endtime="20260216 17:22:04.925"/>
+</test>
+<test id="s1-t2" name="Add Dish" line="46">
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${body}</var>
+<arg>name=${DISH_NAME}</arg>
+<arg>type=${DISH_TYPE}</arg>
+<arg>price=${PRICE}</arg>
+<arg>available_time=${TIME}</arg>
+<arg>image=${IMAGE}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20260216 17:22:04.928" level="INFO">${body} = {'name': 'Burger', 'type': 'Veg', 'price': '150', 'available_time': 'Lunch', 'image': 'burger.jpg'}</msg>
+<status status="PASS" starttime="20260216 17:22:04.927" endtime="20260216 17:22:04.928"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>foodapi</arg>
+<arg>${BASE_URL}/restaurants/${RESTAURANT_ID}/dishes</arg>
+<arg>json=${body}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20260216 17:22:04.935" level="INFO">POST Request : url=http://127.0.0.1:5006/api/v1/restaurants/2/dishes 
+ path_url=/api/v1/restaurants/2/dishes 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '99', 'Content-Type': 'application/json'} 
+ body=b'{"name": "Burger", "type": "Veg", "price": "150", "available_time": "Lunch", "image": "burger.jpg"}' 
+ </msg>
+<msg timestamp="20260216 17:22:04.935" level="INFO">POST Response : url=http://127.0.0.1:5006/api/v1/restaurants/2/dishes 
+ status=201, reason=CREATED 
+ headers={'Server': 'Werkzeug/3.1.5 Python/3.12.3', 'Date': 'Mon, 16 Feb 2026 11:52:04 GMT', 'Content-Type': 'application/json', 'Content-Length': '164', 'Connection': 'close'} 
+ body={
+  "available_time": "Lunch",
+  "enabled": true,
+  "id": 2,
+  "image": "burger.jpg",
+  "name": "Burger",
+  "price": "150",
+  "restaurant_id": 2,
+  "type": "Veg"
+}
+ 
+ </msg>
+<msg timestamp="20260216 17:22:04.935" level="INFO">${response} = &lt;Response [201]&gt;</msg>
+<status status="PASS" starttime="20260216 17:22:04.929" endtime="20260216 17:22:04.935"/>
+</kw>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<arg>201</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<msg timestamp="20260216 17:22:04.937" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<status status="PASS" starttime="20260216 17:22:04.936" endtime="20260216 17:22:04.937"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${json}</var>
+<arg>${response.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20260216 17:22:04.938" level="INFO">${json} = {'available_time': 'Lunch', 'enabled': True, 'id': 2, 'image': 'burger.jpg', 'name': 'Burger', 'price': '150', 'restaurant_id': 2, 'type': 'Veg'}</msg>
+<status status="PASS" starttime="20260216 17:22:04.937" endtime="20260216 17:22:04.938"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${DISH_ID}</arg>
+<arg>${json["id"]}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<msg timestamp="20260216 17:22:04.940" level="INFO">${DISH_ID} = 2</msg>
+<status status="PASS" starttime="20260216 17:22:04.939" endtime="20260216 17:22:04.940"/>
+</kw>
+<status status="PASS" starttime="20260216 17:22:04.926" endtime="20260216 17:22:04.941"/>
+</test>
+<test id="s1-t3" name="Register User" line="61">
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${body}</var>
+<arg>name=${USER_NAME}</arg>
+<arg>email=${USER_EMAIL}</arg>
+<arg>password=${PASSWORD}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20260216 17:22:04.942" level="INFO">${body} = {'name': 'John', 'email': 'john@test.com', 'password': '123456'}</msg>
+<status status="PASS" starttime="20260216 17:22:04.942" endtime="20260216 17:22:04.942"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>foodapi</arg>
+<arg>${BASE_URL}/users/register</arg>
+<arg>json=${body}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20260216 17:22:04.950" level="INFO">POST Request : url=http://127.0.0.1:5006/api/v1/users/register 
+ path_url=/api/v1/users/register 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '64', 'Content-Type': 'application/json'} 
+ body=b'{"name": "John", "email": "john@test.com", "password": "123456"}' 
+ </msg>
+<msg timestamp="20260216 17:22:04.950" level="INFO">POST Response : url=http://127.0.0.1:5006/api/v1/users/register 
+ status=201, reason=CREATED 
+ headers={'Server': 'Werkzeug/3.1.5 Python/3.12.3', 'Date': 'Mon, 16 Feb 2026 11:52:04 GMT', 'Content-Type': 'application/json', 'Content-Length': '84', 'Connection': 'close'} 
+ body={
+  "email": "john@test.com",
+  "id": 4,
+  "name": "John",
+  "password": "123456"
+}
+ 
+ </msg>
+<msg timestamp="20260216 17:22:04.950" level="INFO">${response} = &lt;Response [201]&gt;</msg>
+<status status="PASS" starttime="20260216 17:22:04.942" endtime="20260216 17:22:04.950"/>
+</kw>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<arg>201</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<msg timestamp="20260216 17:22:04.951" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<status status="PASS" starttime="20260216 17:22:04.951" endtime="20260216 17:22:04.951"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${json}</var>
+<arg>${response.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20260216 17:22:04.953" level="INFO">${json} = {'email': 'john@test.com', 'id': 4, 'name': 'John', 'password': '123456'}</msg>
+<status status="PASS" starttime="20260216 17:22:04.952" endtime="20260216 17:22:04.953"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${USER_ID}</arg>
+<arg>${json["id"]}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<msg timestamp="20260216 17:22:04.954" level="INFO">${USER_ID} = 4</msg>
+<status status="PASS" starttime="20260216 17:22:04.953" endtime="20260216 17:22:04.954"/>
+</kw>
+<status status="PASS" starttime="20260216 17:22:04.941" endtime="20260216 17:22:04.955"/>
+</test>
+<test id="s1-t4" name="Place Order" line="74">
+<kw name="Create List" library="BuiltIn">
+<var>${dish_list}</var>
+<arg>${DISH_ID}</arg>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20260216 17:22:04.957" level="INFO">${dish_list} = [2]</msg>
+<status status="PASS" starttime="20260216 17:22:04.956" endtime="20260216 17:22:04.957"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${body}</var>
+<arg>user_id=${USER_ID}</arg>
+<arg>restaurant_id=${RESTAURANT_ID}</arg>
+<arg>dishes=${dish_list}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20260216 17:22:04.958" level="INFO">${body} = {'user_id': 4, 'restaurant_id': 2, 'dishes': [2]}</msg>
+<status status="PASS" starttime="20260216 17:22:04.957" endtime="20260216 17:22:04.958"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>foodapi</arg>
+<arg>${BASE_URL}/orders</arg>
+<arg>json=${body}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20260216 17:22:04.963" level="INFO">POST Request : url=http://127.0.0.1:5006/api/v1/orders 
+ path_url=/api/v1/orders 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '49', 'Content-Type': 'application/json'} 
+ body=b'{"user_id": 4, "restaurant_id": 2, "dishes": [2]}' 
+ </msg>
+<msg timestamp="20260216 17:22:04.963" level="INFO">POST Response : url=http://127.0.0.1:5006/api/v1/orders 
+ status=201, reason=CREATED 
+ headers={'Server': 'Werkzeug/3.1.5 Python/3.12.3', 'Date': 'Mon, 16 Feb 2026 11:52:04 GMT', 'Content-Type': 'application/json', 'Content-Length': '99', 'Connection': 'close'} 
+ body={
+  "dishes": [
+    2
+  ],
+  "id": 2,
+  "restaurant_id": 2,
+  "status": "Placed",
+  "user_id": 4
+}
+ 
+ </msg>
+<msg timestamp="20260216 17:22:04.963" level="INFO">${response} = &lt;Response [201]&gt;</msg>
+<status status="PASS" starttime="20260216 17:22:04.958" endtime="20260216 17:22:04.963"/>
+</kw>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<arg>201</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<msg timestamp="20260216 17:22:04.965" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<status status="PASS" starttime="20260216 17:22:04.964" endtime="20260216 17:22:04.965"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${json}</var>
+<arg>${response.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20260216 17:22:04.966" level="INFO">${json} = {'dishes': [2], 'id': 2, 'restaurant_id': 2, 'status': 'Placed', 'user_id': 4}</msg>
+<status status="PASS" starttime="20260216 17:22:04.965" endtime="20260216 17:22:04.966"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${ORDER_ID}</arg>
+<arg>${json["id"]}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<msg timestamp="20260216 17:22:04.968" level="INFO">${ORDER_ID} = 2</msg>
+<status status="PASS" starttime="20260216 17:22:04.966" endtime="20260216 17:22:04.968"/>
+</kw>
+<status status="PASS" starttime="20260216 17:22:04.956" endtime="20260216 17:22:04.968"/>
+</test>
+<test id="s1-t5" name="Give Rating" line="89">
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${body}</var>
+<arg>order_id=${ORDER_ID}</arg>
+<arg>rating=${RATING}</arg>
+<arg>comment=${COMMENT}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20260216 17:22:04.969" level="INFO">${body} = {'order_id': 2, 'rating': '5', 'comment': 'Excellent'}</msg>
+<status status="PASS" starttime="20260216 17:22:04.969" endtime="20260216 17:22:04.969"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>foodapi</arg>
+<arg>${BASE_URL}/ratings</arg>
+<arg>json=${body}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20260216 17:22:04.974" level="INFO">POST Request : url=http://127.0.0.1:5006/api/v1/ratings 
+ path_url=/api/v1/ratings 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '54', 'Content-Type': 'application/json'} 
+ body=b'{"order_id": 2, "rating": "5", "comment": "Excellent"}' 
+ </msg>
+<msg timestamp="20260216 17:22:04.974" level="INFO">POST Response : url=http://127.0.0.1:5006/api/v1/ratings 
+ status=201, reason=CREATED 
+ headers={'Server': 'Werkzeug/3.1.5 Python/3.12.3', 'Date': 'Mon, 16 Feb 2026 11:52:04 GMT', 'Content-Type': 'application/json', 'Content-Length': '74', 'Connection': 'close'} 
+ body={
+  "comment": "Excellent",
+  "id": 2,
+  "order_id": 2,
+  "rating": "5"
+}
+ 
+ </msg>
+<msg timestamp="20260216 17:22:04.974" level="INFO">${response} = &lt;Response [201]&gt;</msg>
+<status status="PASS" starttime="20260216 17:22:04.970" endtime="20260216 17:22:04.974"/>
+</kw>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<arg>201</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<msg timestamp="20260216 17:22:04.976" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<status status="PASS" starttime="20260216 17:22:04.974" endtime="20260216 17:22:04.976"/>
+</kw>
+<status status="PASS" starttime="20260216 17:22:04.969" endtime="20260216 17:22:04.977"/>
+</test>
+<test id="s1-t6" name="Approve Restaurant (Admin)" line="99">
+<kw name="PUT On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>foodapi</arg>
+<arg>${BASE_URL}/admin/restaurants/${RESTAURANT_ID}/approve</arg>
+<doc>Sends a PUT request on a previously created HTTP Session.</doc>
+<msg timestamp="20260216 17:22:04.985" level="INFO">PUT Request : url=http://127.0.0.1:5006/api/v1/admin/restaurants/2/approve 
+ path_url=/api/v1/admin/restaurants/2/approve 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg timestamp="20260216 17:22:04.985" level="INFO">PUT Response : url=http://127.0.0.1:5006/api/v1/admin/restaurants/2/approve 
+ status=200, reason=OK 
+ headers={'Server': 'Werkzeug/3.1.5 Python/3.12.3', 'Date': 'Mon, 16 Feb 2026 11:52:04 GMT', 'Content-Type': 'application/json', 'Content-Length': '39', 'Connection': 'close'} 
+ body={
+  "message": "Restaurant approved"
+}
+ 
+ </msg>
+<msg timestamp="20260216 17:22:04.985" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20260216 17:22:04.979" endtime="20260216 17:22:04.985"/>
+</kw>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<msg timestamp="20260216 17:22:04.986" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<status status="PASS" starttime="20260216 17:22:04.985" endtime="20260216 17:22:04.986"/>
+</kw>
+<status status="PASS" starttime="20260216 17:22:04.978" endtime="20260216 17:22:04.987"/>
+</test>
+<test id="s1-t7" name="View All Orders (Admin)" line="104">
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>foodapi</arg>
+<arg>${BASE_URL}/admin/orders</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20260216 17:22:04.991" level="INFO">GET Request : url=http://127.0.0.1:5006/api/v1/admin/orders 
+ path_url=/api/v1/admin/orders 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20260216 17:22:04.991" level="INFO">GET Response : url=http://127.0.0.1:5006/api/v1/admin/orders 
+ status=200, reason=OK 
+ headers={'Server': 'Werkzeug/3.1.5 Python/3.12.3', 'Date': 'Mon, 16 Feb 2026 11:52:04 GMT', 'Content-Type': 'application/json', 'Content-Length': '239', 'Connection': 'close'} 
+ body=[
+  {
+    "dishes": [
+      1
+    ],
+    "id": 1,
+    "restaurant_id": 1,
+    "status": "Placed",
+    "user_id": 1
+  },
+  {
+    "dishes": [
+      2
+    ],
+    "id": 2,
+    "restaurant_id": 2,
+    "status": "Placed",
+    "user_id": 4
+  }
+]
+ 
+ </msg>
+<msg timestamp="20260216 17:22:04.991" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20260216 17:22:04.987" endtime="20260216 17:22:04.991"/>
+</kw>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<msg timestamp="20260216 17:22:04.993" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<status status="PASS" starttime="20260216 17:22:04.992" endtime="20260216 17:22:04.993"/>
+</kw>
+<status status="PASS" starttime="20260216 17:22:04.987" endtime="20260216 17:22:04.993"/>
+</test>
+<status status="PASS" starttime="20260216 17:22:04.763" endtime="20260216 17:22:04.995"/>
+</suite>
+<statistics>
+<total>
+<stat pass="7" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="7" fail="0" skip="0" id="s1" name="Foodie">Foodie</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

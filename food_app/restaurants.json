@@ -1,0 +1,22 @@
+[
+    {
+        "id": 1,
+        "name": "Food Hub",
+        "category": "Veg",
+        "location": "Hyderabad",
+        "images": "image.png",
+        "contact": 9876543210,
+        "approved": false,
+        "active": true
+    },
+    {
+        "id": 2,
+        "name": "Test Restaurant",
+        "category": "Fast Food",
+        "location": "Nodia",
+        "images": "[\"img1.jpg\"]",
+        "contact": "9999999999",
+        "approved": true,
+        "active": true
+    }
+]

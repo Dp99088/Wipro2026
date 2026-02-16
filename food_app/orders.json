@@ -1,0 +1,20 @@
+[
+    {
+        "id": 1,
+        "user_id": 1,
+        "restaurant_id": 1,
+        "dishes": [
+            1
+        ],
+        "status": "Placed"
+    },
+    {
+        "id": 2,
+        "user_id": 4,
+        "restaurant_id": 2,
+        "dishes": [
+            2
+        ],
+        "status": "Placed"
+    }
+]
