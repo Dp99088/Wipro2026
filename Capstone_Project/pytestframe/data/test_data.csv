@@ -1,0 +1,7 @@
+first_name,last_name,email,phone,password,product_name,quantity
+Durga,Prasad,dp{random}@example.com,1234567890,Password123,HP,2
+Nischaya,Viswakarma,nv{random}@test.com,9876543210,SecurePass456,HP,3
+Ranga,Akash,akash{random}@outlook.com,5550101122,Akash789,iPhone,1
+Abhi,Ram,abhi{random}@proton.me,4440202233,AbhiP@ss112,MacBook,1
+Mohan,Rupesh,rupesh{random}@gmail.com,3330303344,RupeshD999,Redmi,5
+Thanmayi,Thanu,thanu{random}@example.com,1234567890,Password123,HP,4
